@@ -9,14 +9,14 @@
   <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </head>
-<body>
-<div class='container'>
+<body style='background-color:aliceblue'>
+<div>
   <nav class=" px-2 py-2 d-flex flex-row  justify-content-between border-bottom border-dark">
       <a class='fw-bold' href='/'>MOF</a>
       <div>
         <a href='#' class='btn'>New Item</a>
         <a href='#' class='btn'>Browse</a>
-        <a href='#' class='btn btn-primary'>Sign Up</a>
+        <a href='{% url "core:signup" %}' class='btn btn-primary'>Sign Up</a>
         <a href='#' class='btn btn-secondary'>Login</a>
       </div>
   </nav>
@@ -32,7 +32,7 @@
       <h3>Menu</h3>
       <ul>
         <li><a href='#'>About</a></li>
-        <li><a href='{% url "contact" %}'>Contact</a></li>
+        <li><a href='{% url "core:contact" %}'>Contact</a></li>
         <li><a href='#'>Privacy</a></li>
       </ul>
     </div>

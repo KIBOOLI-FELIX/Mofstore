@@ -1,5 +1,42 @@
 {% extends "core/base.html" %}
 {% block title%}Karibu{%endblock%}
 {% block content  %}
-<h1>Front page<h1>
+<div class='mt-3 px-2 py-4 rounded'>
+<h3 class='mb-2 text-center'>Latest Items</h3>
+<div class='row'>
+  <div class='row'>
+    {% for item in items  %}
+    <div class='col-md-4'>
+       <a href='{% url "items:detail" item.id%}'>
+        <div>
+          <img class='image-fluid rounded'src="{{item.image.url}}"/>
+        </div>
+        <div>
+           <h3>{{item.name}}</h3>
+          <p class='text-muted'>Price:{{item.price}}</p>
+        </div>
+       </a>
+    </div>
+      {% endfor %}
+  </div>
+</div>
+</div>
+<div class='mt-3 px-2 py-4 rounded'>
+<h3 class='mb-2 text-center'>Categories</h3>
+<div class='row'>
+  <div class='row'>
+    {% for category in categories  %}
+    <div class='col-md-4'>
+       <a href='#'>
+        <div>
+           <h3>{{category.name}}</h3>
+          <p>{{category.items.count}} items</p>
+        </div>
+       </a>
+    </div>
+      {% endfor %}
+  </div>
+</div>
+</div>
 {% endblock  %}
+

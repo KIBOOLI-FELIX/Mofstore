@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+<div class='container w-50 p-4 bg-white text-center' style='margin:0 auto;'>
+  <h1>Login up</h1>
+  <div class='row'>
+    <form method='post' action='.'>
+      {% csrf_token %}
+      <div class='form-group mb-3'>
+        <label class='d-inline-block mb-2'>Username</label><br>
+        {{form.username}}
+      </div>
+      <div class='form-group mb-3'>
+        <label class='d-inline-block mb-2'>Password</label><br>
+        {{form.password}}
+      </div>
+      {%if form.non_field_errors or form.errors%}
+        <div class='container mb-3' style='background-color:red'>
+          
+          {% for field in form %}
+            {{field.errors}}
+          {% endfor %}    
+           {{form.non_field_errors}}
+        </div>
+      {% endif %}
+
+      <button type='submit' class='btn btn-secondary w-50 text-white'>Submit</button>
+
+    </form>
+  </div>
+</div>
+{% endblock content %}

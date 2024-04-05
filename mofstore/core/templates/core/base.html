@@ -14,10 +14,15 @@
   <nav class=" px-2 py-2 d-flex flex-row  justify-content-between border-bottom border-dark">
       <a class='fw-bold' href='/'>MOF</a>
       <div>
-        <a href='#' class='btn'>New Item</a>
-        <a href='#' class='btn'>Browse</a>
+        <a href='{%url "items:new" %}' class='btn'>New Item</a>
+        <a href='{%url "items:items" %}' class='btn'>Browse</a>
+        {% if request.user.is_authenticated%}
+        <a href='{%url "communication:inbox" %}' class='btn btn-primary'>Inbox</a>
+        <a href='{%url "dashboard:home" %}' class='btn btn-secondary'>Dashboard</a>
+        {% else %}
         <a href='{% url "core:signup" %}' class='btn btn-primary'>Sign Up</a>
-        <a href='#' class='btn btn-secondary'>Login</a>
+        <a href='{% url "core:login" %}' class='btn btn-secondary'>Login</a>
+        {% endif %}
       </div>
   </nav>
     <div class='px-5 py-5'>

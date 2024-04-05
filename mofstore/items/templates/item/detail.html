@@ -17,7 +17,15 @@
       {{item.description}}
     </p>
     {% endif %}
-    <a class='d-inline-block btn btn-secondary' href='#'>Contact Seller</a>
+    {% if request.user == item.created_by %}
+     <div class='mt-4 p-4 bg-white rounded'>
+      <p> This item is mine</p>
+      <a href='{% url "items:edit" item.id %}' class='display-inline-block  btn btn-warning btn-sm text-white'>Edit</a>
+      <a href='{% url "items:delete" item.id %}' class='display-inline-block  btn btn-danger btn-sm'>Delete</a>
+     </div>
+    {% else %}
+      <a class='d-inline-block btn btn-secondary' href='{% url "communication:new" item.id %}'>Contact Seller</a>
+    {% endif %}
   </div>
 </div>
 <div class='mt-3 px-2 py-4 rounded'>
